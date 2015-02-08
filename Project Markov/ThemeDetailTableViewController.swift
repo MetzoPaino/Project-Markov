@@ -14,9 +14,10 @@ protocol ThemeDetailTableViewControllerDelegate: class {
     func themeDetailTableViewController(controller: ThemeDetailTableViewController, didFinishEditingTheme theme: Theme)
 }
 
-class ThemeDetailTableViewController: UIViewController, UITextFieldDelegate {
+class ThemeDetailTableViewController: UIViewController, UITextViewDelegate {
 
-    @IBOutlet weak var textField: UITextField!
+//    @IBOutlet weak var textField: UITextField!
+    @IBOutlet var textView: UITextView!
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     
     weak var delegate: ThemeDetailTableViewControllerDelegate?
@@ -26,21 +27,18 @@ class ThemeDetailTableViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.textField.textRectForBounds(CGRectMake(2000, 2000, 2000, 2000))
-        self.textField.editingRectForBounds(CGRectMake(500, 2000, 2000, 2000))
-        self.textField.placeholderRectForBounds(CGRectMake(500, 2000, 2000, 2000))
-        self.textField.borderRectForBounds(CGRectMake(500, 2000, 2000, 2000))
+        self.textView.textContainerInset = UIEdgeInsetsMake(20, 20, 20, 20);
         
         if let theme = themeToEdit {
             title = "Edit Theme"
-            textField.text = theme.name
+            textView.text = theme.name
             doneBarButton.enabled = true
         }
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        textField.becomeFirstResponder()
+        textView.becomeFirstResponder()
     }
     
     // Mark - Navbar delegate actions
@@ -51,26 +49,21 @@ class ThemeDetailTableViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func done(sender: UIBarButtonItem) {
         if let theme = themeToEdit {
-            theme.name = textField.text
+            theme.name = textView.text
             theme.dateEdited = NSDate()
             delegate?.themeDetailTableViewController(self, didFinishEditingTheme: theme)
         } else {
-            let theme = Theme(name: textField.text)
+            let theme = Theme(name: textView.text)
             delegate?.themeDetailTableViewController(self, didFinishAddingTheme: theme)
         }
     }
     
-    // MARK: - Text field delegate
+    // MARK: - TextView delegate
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        let oldText: NSString = textField.text
-        let newText: NSString = oldText.stringByReplacingCharactersInRange(range, withString: string)
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        let oldText: NSString = textView.text
+        let newText: NSString = oldText.stringByReplacingCharactersInRange(range, withString: text)
         doneBarButton.enabled = (newText.length > 0)
-        return true
-    }
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        self.done(self.doneBarButton)
         return true
     }
 }

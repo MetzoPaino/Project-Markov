@@ -31,6 +31,7 @@
 		433BB38A1A54455A007A896F /* ThemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433BB3891A54455A007A896F /* ThemesViewController.swift */; };
 		4348B9A31A570F890024746D /* TutorialPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4348B9A21A570F890024746D /* TutorialPageControl.swift */; };
 		4348B9A51A570FBF0024746D /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4348B9A41A570FBF0024746D /* TutorialPageViewController.swift */; };
+		43508C841A87BBEE00A17CFF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43508C831A87BBEE00A17CFF /* CustomTextField.swift */; };
 		435698A81A4F030000A30547 /* MotifTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435698A71A4F030000A30547 /* MotifTableViewCell.swift */; };
 		43AC46651A507B5700628D9A /* MarkovGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AC46641A507B5700628D9A /* MarkovGenerator.swift */; };
 		43AC46671A507C8500628D9A /* MarkovViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AC46661A507C8500628D9A /* MarkovViewController.swift */; };
@@ -81,6 +82,7 @@
 		433BB3891A54455A007A896F /* ThemesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemesViewController.swift; sourceTree = "<group>"; };
 		4348B9A21A570F890024746D /* TutorialPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageControl.swift; sourceTree = "<group>"; };
 		4348B9A41A570FBF0024746D /* TutorialPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
+		43508C831A87BBEE00A17CFF /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		435698A71A4F030000A30547 /* MotifTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotifTableViewCell.swift; sourceTree = "<group>"; };
 		43AC46641A507B5700628D9A /* MarkovGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkovGenerator.swift; sourceTree = "<group>"; };
 		43AC46661A507C8500628D9A /* MarkovViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkovViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				43AC46681A507C8E00628D9A /* Markov */,
 				43F131931A56F3490047B03A /* Settings */,
 				432DC8A11A4DCABB004035F5 /* Main.storyboard */,
+				43508C831A87BBEE00A17CFF /* CustomTextField.swift */,
 				432DC8A41A4DCABB004035F5 /* Images.xcassets */,
 				432DC8A61A4DCABB004035F5 /* LaunchScreen.xib */,
 				432DC8991A4DCABB004035F5 /* Supporting Files */,
@@ -342,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43508C841A87BBEE00A17CFF /* CustomTextField.swift in Sources */,
 				43CECC8B1A4F24880007B2BE /* MotifDetailTableViewController.swift in Sources */,
 				435698A81A4F030000A30547 /* MotifTableViewCell.swift in Sources */,
 				432DC8A01A4DCABB004035F5 /* MotifsViewController.swift in Sources */,

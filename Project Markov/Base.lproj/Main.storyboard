@@ -122,68 +122,6 @@
             </objects>
             <point key="canvasLocation" x="-856" y="-330"/>
         </scene>
-        <!--Add Theme-->
-        <scene sceneID="PEI-Kf-KcK">
-            <objects>
-                <tableViewController id="58p-pz-HcO" customClass="ThemeDetailTableViewController" customModule="Project_Markov" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="mln-8A-JpH">
-                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
-                        <sections>
-                            <tableViewSection id="HdZ-4D-5XZ">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qf1-j3-fgJ">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qf1-j3-fgJ" id="AkW-aV-8F9">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Theme Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z2X-M7-jDi">
-                                                    <rect key="frame" x="20" y="0.0" width="580" height="43"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="58p-pz-HcO" id="KSL-V4-q5W"/>
-                                                    </connections>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="z2X-M7-jDi" firstAttribute="top" secondItem="AkW-aV-8F9" secondAttribute="top" id="270-ix-wc6"/>
-                                                <constraint firstItem="z2X-M7-jDi" firstAttribute="leading" secondItem="AkW-aV-8F9" secondAttribute="leading" constant="20" id="Lbn-oV-5Zz"/>
-                                                <constraint firstAttribute="trailing" secondItem="z2X-M7-jDi" secondAttribute="trailing" id="O5N-Hm-Jq8"/>
-                                                <constraint firstAttribute="bottom" secondItem="z2X-M7-jDi" secondAttribute="bottom" id="d69-0e-yrg"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="58p-pz-HcO" id="CRB-FG-cvF"/>
-                            <outlet property="delegate" destination="58p-pz-HcO" id="dAf-xH-l9a"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Add Theme" id="cso-qu-Jze">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hTj-q9-PSZ">
-                            <connections>
-                                <action selector="cancel:" destination="58p-pz-HcO" id="zr1-kW-HL6"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="3Y3-Cb-3qn">
-                            <connections>
-                                <action selector="done:" destination="58p-pz-HcO" id="pIy-RE-Sw7"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="doneBarButton" destination="3Y3-Cb-3qn" id="4oI-09-Btw"/>
-                        <outlet property="textField" destination="z2X-M7-jDi" id="J2k-hM-XLj"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jHi-Wn-TKN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2057" y="-630"/>
-        </scene>
         <!--Add Motif-->
         <scene sceneID="CDr-FK-bHq">
             <objects>
@@ -1098,35 +1036,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" placeholder="Every good idea needs a name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oAA-TZ-qBf">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Every good idea needs a name" translatesAutoresizingMaskIntoConstraints="NO" id="XJK-q9-pft">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
-                                    <outlet property="delegate" destination="gij-Of-9go" id="EpO-5h-bSL"/>
+                                    <outlet property="delegate" destination="gij-Of-9go" id="rCq-LE-noJ"/>
                                 </connections>
-                            </textField>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gje-sd-yGy" firstAttribute="top" secondItem="oAA-TZ-qBf" secondAttribute="bottom" id="AQt-8S-Pzc"/>
-                            <constraint firstItem="oAA-TZ-qBf" firstAttribute="leading" secondItem="ThE-7I-VVh" secondAttribute="leading" id="CEN-Be-KJb"/>
-                            <constraint firstItem="oAA-TZ-qBf" firstAttribute="top" secondItem="w9J-QT-Q2T" secondAttribute="bottom" id="jG2-7v-eOF"/>
-                            <constraint firstAttribute="trailing" secondItem="oAA-TZ-qBf" secondAttribute="trailing" id="v2E-bY-l3o"/>
+                            <constraint firstAttribute="trailing" secondItem="XJK-q9-pft" secondAttribute="trailing" id="39T-IG-tHV"/>
+                            <constraint firstItem="XJK-q9-pft" firstAttribute="top" secondItem="w9J-QT-Q2T" secondAttribute="bottom" id="Hrj-Fj-aRG"/>
+                            <constraint firstItem="gje-sd-yGy" firstAttribute="top" secondItem="XJK-q9-pft" secondAttribute="bottom" id="MCb-jc-etl"/>
+                            <constraint firstItem="XJK-q9-pft" firstAttribute="leading" secondItem="ThE-7I-VVh" secondAttribute="leading" id="vsE-Aw-0ub"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Theme" id="ZiH-GV-91I">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="mdX-R6-JYT"/>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="done" id="4Dn-DI-6Fg"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="mdX-R6-JYT">
+                            <connections>
+                                <action selector="cancel:" destination="gij-Of-9go" id="ci9-Mf-JMZ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="done" id="4Dn-DI-6Fg">
+                            <connections>
+                                <action selector="done:" destination="gij-Of-9go" id="6As-w8-9n2"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="doneBarButton" destination="4Dn-DI-6Fg" id="rr2-tx-7TV"/>
-                        <outlet property="textField" destination="oAA-TZ-qBf" id="eMg-aA-ckT"/>
+                        <outlet property="textView" destination="XJK-q9-pft" id="9Wz-ob-Ygw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JBH-bk-rPs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2734" y="-638"/>
+            <point key="canvasLocation" x="2057" y="-630"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Ujs-fG-gwX">
