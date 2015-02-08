@@ -16,18 +16,22 @@ protocol ThemeDetailTableViewControllerDelegate: class {
 
 class ThemeDetailTableViewController: UIViewController, UITextViewDelegate {
 
-//    @IBOutlet weak var textField: UITextField!
     @IBOutlet var textView: UITextView!
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     
     weak var delegate: ThemeDetailTableViewControllerDelegate?
+
+
     
     var themeToEdit: Theme?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.textView.textContainerInset = UIEdgeInsetsMake(20, 20, 20, 20);
+        textView.textContainerInset = UIEdgeInsetsMake(20, 20, 20, 20);
+        textView.text = "Placeholder"
+        textView.textColor = UIColor.lightGrayColor()
+        textView.selectedTextRange = textView.textRangeFromPosition(textView.beginningOfDocument, toPosition: textView.beginningOfDocument)
         
         if let theme = themeToEdit {
             title = "Edit Theme"
@@ -41,7 +45,7 @@ class ThemeDetailTableViewController: UIViewController, UITextViewDelegate {
         textView.becomeFirstResponder()
     }
     
-    // Mark - Navbar delegate actions
+    // MARK: - Navbar delegate actions
     
     @IBAction func cancel(sender: UIBarButtonItem) {
         delegate?.themeDetailTableViewControllerDidCancel(self)
@@ -64,6 +68,41 @@ class ThemeDetailTableViewController: UIViewController, UITextViewDelegate {
         let oldText: NSString = textView.text
         let newText: NSString = oldText.stringByReplacingCharactersInRange(range, withString: text)
         doneBarButton.enabled = (newText.length > 0)
+        
+        // Combine the textView text and the replacement text to
+        // create the updated text string
+        let currentText:NSString = textView.text
+        let updatedText = currentText.stringByReplacingCharactersInRange(range, withString:text)
+        
+        // If updated text view will be empty, add the placeholder
+        // and set the cursor to the beginning of the text view
+        if countElements(updatedText) == 0 {
+            
+            textView.text = "Every good idea needs a name"
+            textView.textColor = UIColor.lightGrayColor()
+            
+            textView.selectedTextRange = textView.textRangeFromPosition(textView.beginningOfDocument, toPosition: textView.beginningOfDocument)
+            
+            return false
+        }
+            
+            // Else if the text view's placeholder is showing and the
+            // length of the replacement string is greater than 0, clear
+            // the text view and set its color to black to prepare for
+            // the user's entry
+        else if textView.textColor == UIColor.lightGrayColor() && countElements(text) > 0 {
+            textView.text = nil
+            textView.textColor = UIColor.blackColor()
+        }
+        
         return true
+    }
+    
+    func textViewDidChangeSelection(textView: UITextView) {
+        if self.view.window != nil {
+            if textView.textColor == UIColor.lightGrayColor() {
+                textView.selectedTextRange = textView.textRangeFromPosition(textView.beginningOfDocument, toPosition: textView.beginningOfDocument)
+            }
+        }
     }
 }
