@@ -51,10 +51,16 @@ class MotifDetailTableViewController: UIViewController, UITextViewDelegate {
     // MARK: - IBActions
     
     @IBAction func cancel() {
+        
+        self.textView.resignFirstResponder()
+
         delegate?.motifDetailTableViewControllerDidCancel(self)
     }
     
     @IBAction func done() {
+        
+        self.textView.resignFirstResponder()
+
         if let motif = motifToEdit {
             motif.content = textView.text
             delegate?.motifDetailTableViewController(self, didFinishEditingMotif: motif)

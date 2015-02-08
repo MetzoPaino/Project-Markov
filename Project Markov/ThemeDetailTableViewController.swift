@@ -49,10 +49,15 @@ class ThemeDetailTableViewController: UIViewController, UITextViewDelegate {
     // MARK: - Navbar delegate actions
     
     @IBAction func cancel(sender: UIBarButtonItem) {
+
+        self.textView.resignFirstResponder()
         delegate?.themeDetailTableViewControllerDidCancel(self)
     }
     
     @IBAction func done(sender: UIBarButtonItem) {
+        
+        self.textView.resignFirstResponder()
+        
         if let theme = themeToEdit {
             theme.name = textView.text
             theme.dateEdited = NSDate()
