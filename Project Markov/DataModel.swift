@@ -245,8 +245,22 @@ class DataModel {
     }
     
     func sortThemes() {
+//        themes.sort({ theme1, theme2 in return
+//            theme1.name.localizedStandardCompare(theme2.name) == NSComparisonResult.OrderedAscending})
+        
+//        let dateDescriptor = NSSortDescriptor(key: "", ascending: true)
+        
+//        themes.sort({ $0.date.compare($1.date) == NSComparisonResult.OrderedAscending }
+        
         themes.sort({ theme1, theme2 in return
-            theme1.name.localizedStandardCompare(theme2.name) == NSComparisonResult.OrderedAscending})
+            theme1.dateEdited!.compare (theme2.dateEdited!) == NSComparisonResult.OrderedDescending})
+        
+//        NSSortDescriptor *dateDescriptor = [NSSortDescriptor
+//            sortDescriptorWithKey:@"startDateTime"
+//        ascending:YES];
+//        NSArray *sortDescriptors = [NSArray arrayWithObject:dateDescriptor];
+//        NSArray *sortedEventArray = [nodeEventArray
+//        sortedArrayUsingDescriptors:sortDescriptors];
     }
     
     // MARK: - NSUserDefaults
