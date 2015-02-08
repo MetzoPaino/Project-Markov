@@ -14,7 +14,7 @@ protocol MotifDetailTableViewControllerDelegate: class {
     func motifDetailTableViewController(controller: MotifDetailTableViewController, didFinishEditingMotif motif: Motif)
 }
 
-class MotifDetailTableViewController: UITableViewController, UITextViewDelegate {
+class MotifDetailTableViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet var textView: UITextView!
     @IBOutlet var doneBarButton: UIBarButtonItem!
@@ -56,12 +56,6 @@ class MotifDetailTableViewController: UITableViewController, UITextViewDelegate 
             motif.checked = false
             delegate?.motifDetailTableViewController(self, didFinishAddingMotif: motif)
         }
-    }
-
-    // MARK: - Table view data source
-
-    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        return nil
     }
     
     // MARK: - Text view delegate

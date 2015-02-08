@@ -122,69 +122,6 @@
             </objects>
             <point key="canvasLocation" x="-856" y="-330"/>
         </scene>
-        <!--Add Motif-->
-        <scene sceneID="CDr-FK-bHq">
-            <objects>
-                <tableViewController id="uWG-HG-qPn" customClass="MotifDetailTableViewController" customModule="Project_Markov" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="MVc-Bm-pQy">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
-                        <sections>
-                            <tableViewSection id="hpn-zt-K9B">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="487" id="y4x-wQ-u8a">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="y4x-wQ-u8a" id="4Gu-OD-2qL">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8nY-CP-M78">
-                                                    <rect key="frame" x="20" y="0.0" width="560" height="486"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="uWG-HG-qPn" id="JOY-ci-ocK"/>
-                                                    </connections>
-                                                </textView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="8nY-CP-M78" firstAttribute="top" secondItem="4Gu-OD-2qL" secondAttribute="top" id="h9U-hG-Qir"/>
-                                                <constraint firstItem="8nY-CP-M78" firstAttribute="leading" secondItem="4Gu-OD-2qL" secondAttribute="leading" constant="20" id="jom-uQ-pvF"/>
-                                                <constraint firstAttribute="bottom" secondItem="8nY-CP-M78" secondAttribute="bottom" id="tp1-9g-kjC"/>
-                                                <constraint firstAttribute="trailing" secondItem="8nY-CP-M78" secondAttribute="trailing" constant="20" id="zoC-ph-EFV"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="uWG-HG-qPn" id="JPt-At-5Z5"/>
-                            <outlet property="delegate" destination="uWG-HG-qPn" id="Vv0-fT-GdU"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Add Motif" id="kU8-Dr-iim">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="pEQ-yO-aYV">
-                            <connections>
-                                <action selector="cancel" destination="uWG-HG-qPn" id="sfS-7N-zv8"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="Dz2-3M-zhR">
-                            <connections>
-                                <action selector="done" destination="uWG-HG-qPn" id="HqN-94-QP8"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="doneBarButton" destination="Dz2-3M-zhR" id="PKh-7c-DQ4"/>
-                        <outlet property="textView" destination="8nY-CP-M78" id="zOG-po-GAE"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0Sj-ZB-Pp8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2057" y="129"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="GsR-Sf-5PY">
             <objects>
@@ -194,7 +131,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="uWG-HG-qPn" kind="relationship" relationship="rootViewController" id="MqH-ug-N5V"/>
+                        <segue destination="ONI-Ck-Wj3" kind="relationship" relationship="rootViewController" id="FUr-D4-cqA"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uAl-2f-iDz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1124,6 +1061,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hmM-eN-FOS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-45" y="2287"/>
+        </scene>
+        <!--Add Motif-->
+        <scene sceneID="D0G-De-j0z">
+            <objects>
+                <viewController storyboardIdentifier="Add Motif" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ONI-Ck-Wj3" customClass="MotifDetailTableViewController" customModule="Project_Markov" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PXA-Jf-8Ir"/>
+                        <viewControllerLayoutGuide type="bottom" id="4Ku-Rw-vUf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="E0M-pd-6z5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Every good idea needs a name" translatesAutoresizingMaskIntoConstraints="NO" id="5Op-C5-Uqr">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ONI-Ck-Wj3" id="5YH-Ih-uz9"/>
+                                </connections>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5Op-C5-Uqr" firstAttribute="leading" secondItem="E0M-pd-6z5" secondAttribute="leading" id="Dc4-8X-gu8"/>
+                            <constraint firstAttribute="trailing" secondItem="5Op-C5-Uqr" secondAttribute="trailing" id="Qg3-gb-52q"/>
+                            <constraint firstItem="5Op-C5-Uqr" firstAttribute="top" secondItem="PXA-Jf-8Ir" secondAttribute="bottom" id="fiO-Ow-0Q5"/>
+                            <constraint firstItem="4Ku-Rw-vUf" firstAttribute="top" secondItem="5Op-C5-Uqr" secondAttribute="bottom" id="p6l-42-iBR"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Motif" id="6yx-J6-Vis">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bCh-A7-MVc">
+                            <connections>
+                                <action selector="cancel" destination="ONI-Ck-Wj3" id="uaN-1v-6Pw"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" style="done" systemItem="done" id="QIZ-It-1xD">
+                            <connections>
+                                <action selector="done" destination="ONI-Ck-Wj3" id="mxv-HZ-0A2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="doneBarButton" destination="QIZ-It-1xD" id="nAX-S4-lpb"/>
+                        <outlet property="textView" destination="5Op-C5-Uqr" id="2A2-NX-XMR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mu0-ra-hyW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2029" y="129"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
