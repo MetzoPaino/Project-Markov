@@ -12,14 +12,53 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
-
+    let dataModel = DataModel()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        /*
+        This is a new method on UIApplication introduced in iOS 8.
+        When an app wants to receive push notifications for remote events,
+        but doesn’t want to spam the user with lock-screen messages or in-app popups,
+        this method requests the push token without needing to ask the user for permission.
+        */
+        application.registerForRemoteNotifications()
+
+        
+        
+        
+        
+        
         // Override point for customization after application launch.
         let splitViewController = self.window!.rootViewController as UISplitViewController
         let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as UINavigationController
         navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
+        
+        
+        let masterNavigationController = splitViewController.viewControllers[splitViewController.viewControllers.count - 2] as UINavigationController
+        let masterViewController = masterNavigationController.topViewController as ThemesViewController
+        masterViewController.dataModel = dataModel
+        
+        
+//        for view in masterNavigationController.viewControllers {
+//            
+//            println( "TypeName0 = \(_stdlib_getTypeName(view))")
+//            
+//            if view is ThemeTableViewController {
+//
+//            } else if view is MotifsViewController {
+//
+//            } else {
+//
+//            }
+//        }
+        
         splitViewController.delegate = self
+
+//        UINavigationBar.appearance().shadowImage = UIImage()
+//        UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+//        UINavigationBar.appearance().backgroundColor = UIColor.lightTextColor()
+        
         return true
     }
 
@@ -29,8 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        saveData()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -42,22 +80,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     }
 
     func applicationWillTerminate(application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        saveData()
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        println("Registered for Push notifications with token: \(deviceToken)")
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        println("Push subscription failed: \(error)")
+    }
+    
+    // MARK: - Save NSUserDefaults
+    
+    func saveData() {
+        dataModel.saveData()
     }
 
     // MARK: - Split view
 
     func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController!, ontoPrimaryViewController primaryViewController:UIViewController!) -> Bool {
         if let secondaryAsNavController = secondaryViewController as? UINavigationController {
-            if let topAsDetailController = secondaryAsNavController.topViewController as? DetailViewController {
-                if topAsDetailController.detailItem == nil {
-                    // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
-                    return true
-                }
+            if let topAsDetailController = secondaryAsNavController.topViewController as? MotifsViewController {
+                
+                // returning false will make the app start on the second view
+                return true
+//                if topAsDetailController.detailItem == nil {
+//                    // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
+//                    return true
+//                }
             }
         }
-        return false
+        return true
     }
-
 }
 

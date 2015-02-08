@@ -7,13 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D0BC9B71A6018A500B4FBD1 /* VariationWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0BC9B61A6018A500B4FBD1 /* VariationWord.swift */; };
+		3D52B6F01A7BAF1500037A90 /* ServerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D52B6EF1A7BAF1500037A90 /* ServerModel.swift */; };
+		3D52B6F21A7BD04000037A90 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D52B6F11A7BD04000037A90 /* InfoTableViewCell.swift */; };
+		3DC62ECA1A5EDE7C0054418D /* MarkovSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC62EC91A5EDE7C0054418D /* MarkovSettingsViewController.swift */; };
+		3DD3B87D1A5D636800523E95 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DD3B87C1A5D636800523E95 /* CloudKit.framework */; };
+		43110AE71A52DAA1000E211D /* TestCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43110AE61A52DAA1000E211D /* TestCollectionViewController.swift */; };
+		43110AE91A52DD46000E211D /* MarkovCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43110AE81A52DD46000E211D /* MarkovCollectionViewCell.swift */; };
 		432DC89C1A4DCABB004035F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432DC89B1A4DCABB004035F5 /* AppDelegate.swift */; };
-		432DC89E1A4DCABB004035F5 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432DC89D1A4DCABB004035F5 /* MasterViewController.swift */; };
-		432DC8A01A4DCABB004035F5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432DC89F1A4DCABB004035F5 /* DetailViewController.swift */; };
+		432DC8A01A4DCABB004035F5 /* MotifsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432DC89F1A4DCABB004035F5 /* MotifsViewController.swift */; };
 		432DC8A31A4DCABB004035F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 432DC8A11A4DCABB004035F5 /* Main.storyboard */; };
 		432DC8A51A4DCABB004035F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 432DC8A41A4DCABB004035F5 /* Images.xcassets */; };
 		432DC8A81A4DCABB004035F5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 432DC8A61A4DCABB004035F5 /* LaunchScreen.xib */; };
 		432DC8B41A4DCABB004035F5 /* Project_MarkovTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432DC8B31A4DCABB004035F5 /* Project_MarkovTests.swift */; };
+		432DC8BE1A4DCE92004035F5 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432DC8BD1A4DCE92004035F5 /* DataModel.swift */; };
+		432DC8C41A4DD02F004035F5 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432DC8C31A4DD02F004035F5 /* Theme.swift */; };
+		432DC8C61A4DD07D004035F5 /* Motif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432DC8C51A4DD07D004035F5 /* Motif.swift */; };
+		432DC8C81A4DE1F7004035F5 /* ThemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432DC8C71A4DE1F7004035F5 /* ThemeTableViewCell.swift */; };
+		432DC8CA1A4DEF72004035F5 /* ThemeDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432DC8C91A4DEF72004035F5 /* ThemeDetailTableViewController.swift */; };
+		433BB3841A54182E007A896F /* Variation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433BB3831A54182E007A896F /* Variation.swift */; };
+		433BB3861A541965007A896F /* VariationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433BB3851A541965007A896F /* VariationsTableViewController.swift */; };
+		433BB3881A541AB5007A896F /* VariationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433BB3871A541AB5007A896F /* VariationsTableViewCell.swift */; };
+		433BB38A1A54455A007A896F /* ThemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433BB3891A54455A007A896F /* ThemesViewController.swift */; };
+		4348B9A31A570F890024746D /* TutorialPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4348B9A21A570F890024746D /* TutorialPageControl.swift */; };
+		4348B9A51A570FBF0024746D /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4348B9A41A570FBF0024746D /* TutorialPageViewController.swift */; };
+		435698A81A4F030000A30547 /* MotifTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435698A71A4F030000A30547 /* MotifTableViewCell.swift */; };
+		43AC46651A507B5700628D9A /* MarkovGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AC46641A507B5700628D9A /* MarkovGenerator.swift */; };
+		43AC46671A507C8500628D9A /* MarkovViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AC46661A507C8500628D9A /* MarkovViewController.swift */; };
+		43CECC8B1A4F24880007B2BE /* MotifDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CECC8A1A4F24880007B2BE /* MotifDetailTableViewController.swift */; };
+		43CECC8E1A4F5B4A0007B2BE /* MotifsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CECC8D1A4F5B4A0007B2BE /* MotifsTableViewController.swift */; };
+		43E307B61A6C3BF5001B46C9 /* SentenceLengthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E307B51A6C3BF5001B46C9 /* SentenceLengthViewController.swift */; };
+		43F131921A56F3210047B03A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F131911A56F3210047B03A /* SettingsViewController.swift */; };
+		43F131951A56F4850047B03A /* MinMaxSentenceLengthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F131941A56F4850047B03A /* MinMaxSentenceLengthTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,17 +52,43 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D0BC9B61A6018A500B4FBD1 /* VariationWord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariationWord.swift; sourceTree = "<group>"; };
+		3D52B6EF1A7BAF1500037A90 /* ServerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerModel.swift; sourceTree = "<group>"; };
+		3D52B6F11A7BD04000037A90 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
+		3DC62EC91A5EDE7C0054418D /* MarkovSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkovSettingsViewController.swift; sourceTree = "<group>"; };
+		3DD3B87B1A5D635E00523E95 /* Project Markov.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Project Markov.entitlements"; sourceTree = "<group>"; };
+		3DD3B87C1A5D636800523E95 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		43110AE61A52DAA1000E211D /* TestCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCollectionViewController.swift; sourceTree = "<group>"; };
+		43110AE81A52DD46000E211D /* MarkovCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkovCollectionViewCell.swift; sourceTree = "<group>"; };
 		432DC8961A4DCABB004035F5 /* Project Markov.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project Markov.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		432DC89A1A4DCABB004035F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		432DC89B1A4DCABB004035F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		432DC89D1A4DCABB004035F5 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		432DC89F1A4DCABB004035F5 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		432DC89F1A4DCABB004035F5 /* MotifsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotifsViewController.swift; sourceTree = "<group>"; };
 		432DC8A21A4DCABB004035F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		432DC8A41A4DCABB004035F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		432DC8A71A4DCABB004035F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		432DC8AD1A4DCABB004035F5 /* Project MarkovTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Project MarkovTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		432DC8B21A4DCABB004035F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		432DC8B31A4DCABB004035F5 /* Project_MarkovTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project_MarkovTests.swift; sourceTree = "<group>"; };
+		432DC8BD1A4DCE92004035F5 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		432DC8C31A4DD02F004035F5 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		432DC8C51A4DD07D004035F5 /* Motif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Motif.swift; sourceTree = "<group>"; };
+		432DC8C71A4DE1F7004035F5 /* ThemeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeTableViewCell.swift; sourceTree = "<group>"; };
+		432DC8C91A4DEF72004035F5 /* ThemeDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeDetailTableViewController.swift; sourceTree = "<group>"; };
+		433BB3831A54182E007A896F /* Variation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Variation.swift; sourceTree = "<group>"; };
+		433BB3851A541965007A896F /* VariationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariationsTableViewController.swift; sourceTree = "<group>"; };
+		433BB3871A541AB5007A896F /* VariationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariationsTableViewCell.swift; sourceTree = "<group>"; };
+		433BB3891A54455A007A896F /* ThemesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemesViewController.swift; sourceTree = "<group>"; };
+		4348B9A21A570F890024746D /* TutorialPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageControl.swift; sourceTree = "<group>"; };
+		4348B9A41A570FBF0024746D /* TutorialPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
+		435698A71A4F030000A30547 /* MotifTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotifTableViewCell.swift; sourceTree = "<group>"; };
+		43AC46641A507B5700628D9A /* MarkovGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkovGenerator.swift; sourceTree = "<group>"; };
+		43AC46661A507C8500628D9A /* MarkovViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkovViewController.swift; sourceTree = "<group>"; };
+		43CECC8A1A4F24880007B2BE /* MotifDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotifDetailTableViewController.swift; sourceTree = "<group>"; };
+		43CECC8D1A4F5B4A0007B2BE /* MotifsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotifsTableViewController.swift; sourceTree = "<group>"; };
+		43E307B51A6C3BF5001B46C9 /* SentenceLengthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentenceLengthViewController.swift; sourceTree = "<group>"; };
+		43F131911A56F3210047B03A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		43F131941A56F4850047B03A /* MinMaxSentenceLengthTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinMaxSentenceLengthTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DD3B87D1A5D636800523E95 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +113,7 @@
 		432DC88D1A4DCABB004035F5 = {
 			isa = PBXGroup;
 			children = (
+				3DD3B87C1A5D636800523E95 /* CloudKit.framework */,
 				432DC8981A4DCABB004035F5 /* Project Markov */,
 				432DC8B01A4DCABB004035F5 /* Project MarkovTests */,
 				432DC8971A4DCABB004035F5 /* Products */,
@@ -79,9 +132,13 @@
 		432DC8981A4DCABB004035F5 /* Project Markov */ = {
 			isa = PBXGroup;
 			children = (
+				3DD3B87B1A5D635E00523E95 /* Project Markov.entitlements */,
 				432DC89B1A4DCABB004035F5 /* AppDelegate.swift */,
-				432DC89D1A4DCABB004035F5 /* MasterViewController.swift */,
-				432DC89F1A4DCABB004035F5 /* DetailViewController.swift */,
+				43AC46621A506AD400628D9A /* Models */,
+				43AC46631A50777100628D9A /* Themes */,
+				43CECC8C1A4F5B1C0007B2BE /* Motifs */,
+				43AC46681A507C8E00628D9A /* Markov */,
+				43F131931A56F3490047B03A /* Settings */,
 				432DC8A11A4DCABB004035F5 /* Main.storyboard */,
 				432DC8A41A4DCABB004035F5 /* Images.xcassets */,
 				432DC8A61A4DCABB004035F5 /* LaunchScreen.xib */,
@@ -113,6 +170,67 @@
 				432DC8B21A4DCABB004035F5 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		43AC46621A506AD400628D9A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				432DC8BD1A4DCE92004035F5 /* DataModel.swift */,
+				3D52B6EF1A7BAF1500037A90 /* ServerModel.swift */,
+				432DC8C31A4DD02F004035F5 /* Theme.swift */,
+				432DC8C51A4DD07D004035F5 /* Motif.swift */,
+				433BB3831A54182E007A896F /* Variation.swift */,
+				43AC46641A507B5700628D9A /* MarkovGenerator.swift */,
+				3D0BC9B61A6018A500B4FBD1 /* VariationWord.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		43AC46631A50777100628D9A /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				433BB3891A54455A007A896F /* ThemesViewController.swift */,
+				432DC8C71A4DE1F7004035F5 /* ThemeTableViewCell.swift */,
+				432DC8C91A4DEF72004035F5 /* ThemeDetailTableViewController.swift */,
+			);
+			name = Themes;
+			sourceTree = "<group>";
+		};
+		43AC46681A507C8E00628D9A /* Markov */ = {
+			isa = PBXGroup;
+			children = (
+				43AC46661A507C8500628D9A /* MarkovViewController.swift */,
+				3DC62EC91A5EDE7C0054418D /* MarkovSettingsViewController.swift */,
+				43110AE81A52DD46000E211D /* MarkovCollectionViewCell.swift */,
+				43110AE61A52DAA1000E211D /* TestCollectionViewController.swift */,
+			);
+			name = Markov;
+			sourceTree = "<group>";
+		};
+		43CECC8C1A4F5B1C0007B2BE /* Motifs */ = {
+			isa = PBXGroup;
+			children = (
+				432DC89F1A4DCABB004035F5 /* MotifsViewController.swift */,
+				43CECC8D1A4F5B4A0007B2BE /* MotifsTableViewController.swift */,
+				435698A71A4F030000A30547 /* MotifTableViewCell.swift */,
+				43CECC8A1A4F24880007B2BE /* MotifDetailTableViewController.swift */,
+				433BB3851A541965007A896F /* VariationsTableViewController.swift */,
+				433BB3871A541AB5007A896F /* VariationsTableViewCell.swift */,
+			);
+			name = Motifs;
+			sourceTree = "<group>";
+		};
+		43F131931A56F3490047B03A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				43F131911A56F3210047B03A /* SettingsViewController.swift */,
+				43F131941A56F4850047B03A /* MinMaxSentenceLengthTableViewCell.swift */,
+				3D52B6F11A7BD04000037A90 /* InfoTableViewCell.swift */,
+				4348B9A21A570F890024746D /* TutorialPageControl.swift */,
+				4348B9A41A570FBF0024746D /* TutorialPageViewController.swift */,
+				43E307B51A6C3BF5001B46C9 /* SentenceLengthViewController.swift */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +282,15 @@
 				TargetAttributes = {
 					432DC8951A4DCABB004035F5 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = XEN7DUD59Z;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					432DC8AC1A4DCABB004035F5 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -215,9 +342,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				432DC8A01A4DCABB004035F5 /* DetailViewController.swift in Sources */,
-				432DC89E1A4DCABB004035F5 /* MasterViewController.swift in Sources */,
+				43CECC8B1A4F24880007B2BE /* MotifDetailTableViewController.swift in Sources */,
+				435698A81A4F030000A30547 /* MotifTableViewCell.swift in Sources */,
+				432DC8A01A4DCABB004035F5 /* MotifsViewController.swift in Sources */,
+				43F131921A56F3210047B03A /* SettingsViewController.swift in Sources */,
+				3DC62ECA1A5EDE7C0054418D /* MarkovSettingsViewController.swift in Sources */,
+				432DC8C81A4DE1F7004035F5 /* ThemeTableViewCell.swift in Sources */,
+				3D52B6F01A7BAF1500037A90 /* ServerModel.swift in Sources */,
+				43110AE91A52DD46000E211D /* MarkovCollectionViewCell.swift in Sources */,
+				4348B9A31A570F890024746D /* TutorialPageControl.swift in Sources */,
+				43AC46671A507C8500628D9A /* MarkovViewController.swift in Sources */,
+				432DC8BE1A4DCE92004035F5 /* DataModel.swift in Sources */,
+				433BB3841A54182E007A896F /* Variation.swift in Sources */,
+				3D52B6F21A7BD04000037A90 /* InfoTableViewCell.swift in Sources */,
+				4348B9A51A570FBF0024746D /* TutorialPageViewController.swift in Sources */,
+				43110AE71A52DAA1000E211D /* TestCollectionViewController.swift in Sources */,
+				432DC8C41A4DD02F004035F5 /* Theme.swift in Sources */,
+				43CECC8E1A4F5B4A0007B2BE /* MotifsTableViewController.swift in Sources */,
+				433BB3861A541965007A896F /* VariationsTableViewController.swift in Sources */,
+				43AC46651A507B5700628D9A /* MarkovGenerator.swift in Sources */,
+				433BB3881A541AB5007A896F /* VariationsTableViewCell.swift in Sources */,
+				3D0BC9B71A6018A500B4FBD1 /* VariationWord.swift in Sources */,
+				43E307B61A6C3BF5001B46C9 /* SentenceLengthViewController.swift in Sources */,
+				433BB38A1A54455A007A896F /* ThemesViewController.swift in Sources */,
+				432DC8CA1A4DEF72004035F5 /* ThemeDetailTableViewController.swift in Sources */,
+				43F131951A56F4850047B03A /* MinMaxSentenceLengthTableViewCell.swift in Sources */,
 				432DC89C1A4DCABB004035F5 /* AppDelegate.swift in Sources */,
+				432DC8C61A4DD07D004035F5 /* Motif.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,9 +493,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Project Markov/Project Markov.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Project Markov/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -352,9 +507,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Project Markov/Project Markov.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Project Markov/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -411,6 +570,7 @@
 				432DC8B91A4DCABB004035F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		432DC8BA1A4DCABB004035F5 /* Build configuration list for PBXNativeTarget "Project MarkovTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +579,7 @@
 				432DC8BC1A4DCABB004035F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
