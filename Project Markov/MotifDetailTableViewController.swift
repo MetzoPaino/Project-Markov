@@ -18,7 +18,7 @@ class MotifDetailTableViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet var textView: UITextView!
     @IBOutlet var doneBarButton: UIBarButtonItem!
-    
+
     weak var delegate: MotifDetailTableViewControllerDelegate?
     
     var motifToEdit: Motif?
@@ -27,6 +27,9 @@ class MotifDetailTableViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let dismissKeyboardBarButton = UIBarButtonItem(title: "Keyboard", style: .Plain , target: self, action: "dismissKeyboard")
+        self.navigationItem.setRightBarButtonItems([doneBarButton, dismissKeyboardBarButton], animated: true)
         
         textView.textContainerInset = UIEdgeInsetsMake(20, 20, 20, 20);
         textView.text = "Placeholder"
@@ -60,6 +63,15 @@ class MotifDetailTableViewController: UIViewController, UITextViewDelegate {
             let motif = Motif(content: textView.text)
             motif.checked = false
             delegate?.motifDetailTableViewController(self, didFinishAddingMotif: motif)
+        }
+    }
+    
+    @IBAction func dismissKeyboard() {
+        
+        if textView.isFirstResponder() {
+            textView.resignFirstResponder()
+        } else {
+            textView.becomeFirstResponder()
         }
     }
     

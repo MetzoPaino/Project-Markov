@@ -21,12 +21,13 @@ class ThemeDetailTableViewController: UIViewController, UITextViewDelegate {
     
     weak var delegate: ThemeDetailTableViewControllerDelegate?
 
-
-    
     var themeToEdit: Theme?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let dismissKeyboardBarButton = UIBarButtonItem(title: "Keyboard", style: .Plain , target: self, action: "dismissKeyboard")
+        self.navigationItem.setRightBarButtonItems([doneBarButton, dismissKeyboardBarButton], animated: true)
         
         textView.textContainerInset = UIEdgeInsetsMake(20, 20, 20, 20);
         textView.text = "Placeholder"
@@ -59,6 +60,15 @@ class ThemeDetailTableViewController: UIViewController, UITextViewDelegate {
         } else {
             let theme = Theme(name: textView.text)
             delegate?.themeDetailTableViewController(self, didFinishAddingTheme: theme)
+        }
+    }
+    
+    @IBAction func dismissKeyboard() {
+        
+        if textView.isFirstResponder() {
+            textView.resignFirstResponder()
+        } else {
+            textView.becomeFirstResponder()
         }
     }
     
