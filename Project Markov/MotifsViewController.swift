@@ -16,7 +16,7 @@ class MotifsViewController: UIViewController, MotifsTableViewControllerDelegate,
     @IBOutlet var containerView: UIView!
     @IBOutlet var createVariationButton: UIBarButtonItem!
     
-    var theme: Theme!
+    var theme: Theme?
     var tabController: UITabBarController!
     var minimumSentenceLength = 0
     var maximumSentenceLength = 0
@@ -24,7 +24,15 @@ class MotifsViewController: UIViewController, MotifsTableViewControllerDelegate,
     // MARK: - View Configuration
     
     override func viewDidLoad() {
-        title = theme.name
+        
+        if let name = theme?.name {
+            title = name
+        } else {
+            title = ""
+        }
+        
+        
+
         
 //        let themeReference = CKReference(record: theme.record, action: .DeleteSelf)
 //        println("Theme recordId = \(theme.record.recordID)")
@@ -67,12 +75,21 @@ class MotifsViewController: UIViewController, MotifsTableViewControllerDelegate,
                 for view in views {
                     if view is MotifsTableViewController {
                         let controller = view as MotifsTableViewController
-                        controller.theme = theme as Theme
+                        
+                        if let theme = theme {
+                            controller.theme = theme as Theme
+                        }
+                        
+//                        controller.theme = theme as Theme
                         controller.delegate = self
                     
                     } else if view is VariationsTableViewController {
                         let controller = view as VariationsTableViewController
-                        controller.theme = theme as Theme
+                        
+                        if let theme = theme {
+                            controller.theme = theme as Theme
+                        }
+//                        controller.theme = theme as Theme
                     }
                 }
             }
@@ -85,12 +102,18 @@ class MotifsViewController: UIViewController, MotifsTableViewControllerDelegate,
 
             var checkedMotifs = [Motif]()
             
-            for motif in theme.motifs {
-                if motif.checked {
-                    checkedMotifs.append(motif)
-                    controller.selectedMotifs.append(motif)
+            println("We got here")
+            
+            if let theme = theme {
+                for motif in theme.motifs {
+                    if motif.checked {
+                        checkedMotifs.append(motif)
+                        controller.selectedMotifs.append(motif)
+                    }
                 }
             }
+            
+
         }
     }
     
@@ -108,49 +131,57 @@ class MotifsViewController: UIViewController, MotifsTableViewControllerDelegate,
 
     func motifDetailTableViewController(controller: MotifDetailTableViewController, didFinishAddingMotif motif: Motif) {
         
-        let newRowIndex = theme.motifs.count
-        theme.motifs.append(motif)
-        let indexPath = NSIndexPath(forRow: newRowIndex, inSection: 0)
-        let indexPaths = [indexPath]
-        if let index = find(theme.motifs, motif) {
-            let indexPath = NSIndexPath(forRow: index, inSection: 0)
+        if let theme = theme {
             
-            if let views = tabController.viewControllers {
-                for view in views {
-                    if view is MotifsTableViewController {
-                        let controller = view as MotifsTableViewController
-                        if let cell = controller.tableView.cellForRowAtIndexPath(indexPath) as? MotifTableViewCell {
-                            controller.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+            let newRowIndex = theme.motifs.count
+            theme.motifs.append(motif)
+            let indexPath = NSIndexPath(forRow: newRowIndex, inSection: 0)
+            let indexPaths = [indexPath]
+            if let index = find(theme.motifs, motif) {
+                let indexPath = NSIndexPath(forRow: index, inSection: 0)
+                
+                if let views = tabController.viewControllers {
+                    for view in views {
+                        if view is MotifsTableViewController {
+                            let controller = view as MotifsTableViewController
+                            if let cell = controller.tableView.cellForRowAtIndexPath(indexPath) as? MotifTableViewCell {
+                                controller.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+                            }
                         }
                     }
                 }
             }
+            let dictionary: NSDictionary = ["Motif": motif, "Theme": theme]
+            NSNotificationCenter.defaultCenter().postNotificationName("SaveMotifToCloud", object: dictionary)
         }
-        let dictionary: NSDictionary = ["Motif": motif, "Theme": theme]
-        NSNotificationCenter.defaultCenter().postNotificationName("SaveMotifToCloud", object: dictionary)
-
         
         dismissViewControllerAnimated(true, completion: nil)
     }
     
     func motifDetailTableViewController(controller: MotifDetailTableViewController, didFinishEditingMotif motif: Motif) {
-        if let index = find(theme.motifs, motif) {
-            let indexPath = NSIndexPath(forRow: index, inSection: 0)
+        
+        if let theme = theme {
             
-            if let views = tabController.viewControllers {
-                for view in views {
-                    if view is MotifsTableViewController {
-                        let controller = view as MotifsTableViewController
-                        if let cell = controller.tableView.cellForRowAtIndexPath(indexPath) as? MotifTableViewCell {
-                            cell.contentLabel.text = motif.content
-                            controller.tableView.reloadData()
+            if let index = find(theme.motifs, motif) {
+                let indexPath = NSIndexPath(forRow: index, inSection: 0)
+                
+                if let views = tabController.viewControllers {
+                    for view in views {
+                        if view is MotifsTableViewController {
+                            let controller = view as MotifsTableViewController
+                            if let cell = controller.tableView.cellForRowAtIndexPath(indexPath) as? MotifTableViewCell {
+                                cell.contentLabel.text = motif.content
+                                controller.tableView.reloadData()
+                            }
                         }
                     }
                 }
             }
+            let dictionary: NSDictionary = ["Motif": motif]
+            NSNotificationCenter.defaultCenter().postNotificationName("UpdateMotifInCloud", object: dictionary)
+            
         }
-        let dictionary: NSDictionary = ["Motif": motif]
-        NSNotificationCenter.defaultCenter().postNotificationName("UpdateMotifInCloud", object: dictionary)
+
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -170,23 +201,26 @@ class MotifsViewController: UIViewController, MotifsTableViewControllerDelegate,
     
     func markovViewController(controller: MarkovViewController, didFinishSavingVariation variation: Variation) {
         
-        let newRowIndex = theme.variations.count
-        theme.variations.append(variation)
-        let indexPath = NSIndexPath(forRow: newRowIndex, inSection: 0)
-        let indexPaths = [indexPath]
-        if let index = find(theme.variations, variation) {
-            let indexPath = NSIndexPath(forRow: index, inSection: 0)
+        if let theme = theme {
             
-            if let views = tabController.viewControllers {
-                for view in views {
-                    if view is VariationsTableViewController {
-                        let controller = view as VariationsTableViewController
+            let newRowIndex = theme.variations.count
+            theme.variations.append(variation)
+            let indexPath = NSIndexPath(forRow: newRowIndex, inSection: 0)
+            let indexPaths = [indexPath]
+            if let index = find(theme.variations, variation) {
+                let indexPath = NSIndexPath(forRow: index, inSection: 0)
+                
+                if let views = tabController.viewControllers {
+                    for view in views {
+                        if view is VariationsTableViewController {
+                            let controller = view as VariationsTableViewController
+                        }
                     }
                 }
             }
+            let dictionary: NSDictionary = ["Variation": variation, "Theme": theme]
+            NSNotificationCenter.defaultCenter().postNotificationName("SaveVariationToCloud", object: dictionary)
         }
-        let dictionary: NSDictionary = ["Variation": variation, "Theme": theme]
-        NSNotificationCenter.defaultCenter().postNotificationName("SaveVariationToCloud", object: dictionary)
 
         dismissViewControllerAnimated(true, completion: nil)
     }

@@ -13,8 +13,9 @@ protocol MotifsTableViewControllerDelegate: class {
     func motifsTableViewController(controller: MotifsTableViewController, allowVariations amountOfCheckedMotifs: Int)
 }
 
-class MotifsTableViewController: MotifsViewController, UITableViewDataSource, UITableViewDelegate {
-    
+//class MotifsTableViewController: MotifsViewController, UITableViewDataSource, UITableViewDelegate {
+    class MotifsTableViewController: MotifsViewController {
+
     @IBOutlet var tableView: UITableView!
     
     weak var delegate: MotifsTableViewControllerDelegate?
@@ -33,24 +34,39 @@ class MotifsTableViewController: MotifsViewController, UITableViewDataSource, UI
     // MARK: - TableView Delegate
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return theme.motifs.count
+        
+        if let theme = theme {
+            return theme.motifs.count
+        } else {
+            return 0;
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MotifCell", forIndexPath: indexPath) as MotifTableViewCell
-        let motif = theme.motifs[indexPath.row]
-        cell.contentLabel.text = motif.content
-        configureCheckmarkForCell(cell, withMotif: motif)
         
+        let cell = tableView.dequeueReusableCellWithIdentifier("MotifCell", forIndexPath: indexPath) as MotifTableViewCell
+        
+        if let theme = theme {
+            let motif = theme.motifs[indexPath.row]
+            cell.contentLabel.text = motif.content
+            configureCheckmarkForCell(cell, withMotif: motif)
+        }
+
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     
         let cell = tableView.cellForRowAtIndexPath(indexPath) as MotifTableViewCell
-        let motif = theme.motifs[indexPath.row]
-        motif.toggleChecked()
-        configureCheckmarkForCell(cell, withMotif: motif)
+        
+        if let theme = theme {
+
+            let motif = theme.motifs[indexPath.row]
+            motif.toggleChecked()
+            configureCheckmarkForCell(cell, withMotif: motif)
+        }
+        
+
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
@@ -60,11 +76,16 @@ class MotifsTableViewController: MotifsViewController, UITableViewDataSource, UI
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        theme.motifs.removeAtIndex(indexPath.row)
-        let indexPaths = [indexPath]
-        tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
-        if editingStyle == .Delete {
+        
+        if let theme = theme {
 
+            
+            theme.motifs.removeAtIndex(indexPath.row)
+            let indexPaths = [indexPath]
+            tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+            if editingStyle == .Delete {
+                
+            }
         }
     }
     
@@ -72,14 +93,16 @@ class MotifsTableViewController: MotifsViewController, UITableViewDataSource, UI
         
         // Handle edit through delegate to super
         var moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Edit", handler:{ action, indexpath in
-            let motif = self.theme.motifs[indexPath.row]
-            self.delegate?.motifsTableViewController(self, willEditMotif: motif)
+            let motif = self.theme?.motifs[indexPath.row]
+            self.delegate?.motifsTableViewController(self, willEditMotif: motif!)
         });
         moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
         
         // Handle delete directly
         var deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler:{ action, indexpath in
-            self.theme.motifs.removeAtIndex(indexPath.row)
+            
+            
+            self.theme?.motifs.removeAtIndex(indexPath.row)
             let indexPaths = [indexPath]
                 tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
             });
@@ -98,11 +121,17 @@ class MotifsTableViewController: MotifsViewController, UITableViewDataSource, UI
         }
             
         var amountOfCheckedMotifs = 0
-        for motif in theme.motifs {
-            if motif.checked {
-                amountOfCheckedMotifs++
+        
+        if let theme = theme {
+            
+            for motif in theme.motifs {
+                if motif.checked {
+                    amountOfCheckedMotifs++
+                }
             }
         }
+        
+
         self.delegate?.motifsTableViewController(self, allowVariations: amountOfCheckedMotifs)
     }
 }

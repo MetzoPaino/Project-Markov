@@ -115,7 +115,7 @@ class ThemesViewController: UIViewController, UITableViewDataSource, UITableView
         if segue.identifier == "ShowTheme" {
             let navigationController = segue.destinationViewController as UINavigationController
             let controller = navigationController.topViewController as MotifsViewController
-            controller.theme = sender as Theme
+            controller.theme = sender as? Theme
             controller.minimumSentenceLength = dataModel.minimumSentenceLength
             controller.maximumSentenceLength = dataModel.maximumSentenceLength
 

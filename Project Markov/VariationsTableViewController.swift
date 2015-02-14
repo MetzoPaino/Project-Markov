@@ -8,7 +8,8 @@
 
 import UIKit
 
-class VariationsTableViewController: MotifsViewController, UITableViewDataSource, UITableViewDelegate {
+//class VariationsTableViewController: MotifsViewController, UITableViewDataSource, UITableViewDelegate {
+    class VariationsTableViewController: MotifsViewController {
 
     @IBOutlet var tableView: UITableView!
     
@@ -22,13 +23,25 @@ class VariationsTableViewController: MotifsViewController, UITableViewDataSource
     // MARK: - Table view data source
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return theme.variations.count
+        
+        if let theme = theme {
+            return theme.variations.count
+
+        } else {
+            return 0
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("VariationCell", forIndexPath: indexPath) as VariationsTableViewCell
-        let variation = theme.variations[indexPath.row]
-        cell.contentLabel.text = variation.sentence
+        
+        if let theme = theme {
+            
+            let variation = theme.variations[indexPath.row]
+            cell.contentLabel.text = variation.sentence
+        }
+        
+
         return cell
     }
     
@@ -45,11 +58,17 @@ class VariationsTableViewController: MotifsViewController, UITableViewDataSource
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        theme.variations.removeAtIndex(indexPath.row)
-        let indexPaths = [indexPath]
-        tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
-        if editingStyle == .Delete {
-            
+        
+        if let theme = theme {
+          
+            theme.variations.removeAtIndex(indexPath.row)
+            let indexPaths = [indexPath]
+            tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+            if editingStyle == .Delete {
+                
+            }
         }
+        
+
     }
 }

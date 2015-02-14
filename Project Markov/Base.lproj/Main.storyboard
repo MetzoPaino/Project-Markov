@@ -642,7 +642,7 @@
                         <outlet property="searchDisplayController" destination="AWh-xR-IQc" id="1wz-bf-yK9"/>
                         <outlet property="tableView" destination="iAh-zJ-FQl" id="gz9-zD-Dhm"/>
                         <outlet property="toolBar" destination="bID-FY-8Ok" id="YYU-Yc-AXM"/>
-                        <segue destination="vC3-pB-5Vb" kind="show" identifier="ShowTheme" id="TC9-Tn-5s1"/>
+                        <segue destination="vC3-pB-5Vb" kind="showDetail" identifier="ShowTheme" id="TC9-Tn-5s1"/>
                         <segue destination="67c-7a-QW6" kind="presentation" identifier="EditTheme" id="UQp-me-3m4"/>
                     </connections>
                 </viewController>
@@ -1115,7 +1115,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="TC9-Tn-5s1"/>
+        <segue reference="Tll-UG-LXB"/>
         <segue reference="cgP-tc-iU7"/>
         <segue reference="tyi-wd-2M7"/>
         <segue reference="EBi-kr-qIH"/>

@@ -19,7 +19,7 @@ extension Array {
 
 class VariationGenerator {
     
-    // MARK: Shuffle Array
+    // MARK: - Shuffle Array
     // Ensure the motifs aren't always in the same sequence
     
     private func shuffleArray(selectedMotifs: [Motif]) -> [String] {
@@ -47,7 +47,7 @@ class VariationGenerator {
         return shuffledArray
     }
     
-    // MARK: Strip Words
+    // MARK: - Strip Words
     // Strip all motifs into array of single words whenever characters in unwantedCharacterSet are found
     // Will recognise spaces as words, so need to ignore those
     
@@ -81,7 +81,7 @@ class VariationGenerator {
         return strippedArray
     }
     
-    // MARK: Generate sentence length
+    // MARK: - Generate sentence length
     
     private func generateSentenceLength(maxLength: Int, minLength: Int) -> Int {
         
@@ -94,7 +94,7 @@ class VariationGenerator {
         return sentenceLength
     }
     
-    // MARK: Generate random seed
+    // MARK: - Generate random seed
     // Seed must be -2 from wordArraySize, due to needing 3 words in succession
     
     private func generateRandomSeed(maxSeedLength: Int) -> Int {
@@ -104,7 +104,7 @@ class VariationGenerator {
         return seed
     }
     
-    // MARK: Pick starting words
+    // MARK: - Pick starting words
     
     private func pickStartingWordsFrom(seed: Int, totalWordList: [VariationWord]) -> (firstWord: String, firstWordIndex: Int, secondWord: String, secondWordIndex: Int) {
         
@@ -114,7 +114,7 @@ class VariationGenerator {
         return (firstWord, seed, secondWord, seed + 1)
     }
     
-    // MARK: Find all possible paths
+    // MARK: - Find all possible paths
     // Need to find all possible word paths, then randomly choose one
     
     private func findWordForContinuationFrom(totalWordList: [VariationWord], firstWord: String, secondWord: String) -> (thirdWord: String, indexOfThirdWord: Int)? {
@@ -163,7 +163,7 @@ class VariationGenerator {
         
     }
     
-    // MARK: Construct sentence
+    // MARK: - Construct sentence
     
     func createSentence(sentenceComponents: [String]) -> String {
         
@@ -175,7 +175,7 @@ class VariationGenerator {
         return variationSentence
     }
     
-    // MARK: Construct variation
+    // MARK: - Construct variation
     
     func createVariation(selectedMotifs: [Motif], minSentenceLength: Int, maxSentenceLength: Int, maxSectionLength: Int) -> Variation {
 

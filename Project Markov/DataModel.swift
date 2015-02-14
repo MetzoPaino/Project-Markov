@@ -18,16 +18,23 @@ class DataModel {
     let publicDB : CKDatabase
     let privateDB : CKDatabase
     
-    let saveThemeToCloudString = "SaveThemeToCloud"
-    let updateThemeInCloudString = "UpdateThemeInCloud"
-    let updateMotifInCloudString = "UpdateMotifInCloud"
-
-    let deleteThemeFromCloudString = "DeleteThemeFromCloud"
-    let saveMotifToCloudString = "SaveMotifToCloud"
-    let saveThemesAndMotifsToCloudString = "SaveThemesAndMotifsToCloud"
-    let saveVariationToCloudString = "SaveVariationToCloud"
     
-    let performFullCloudFetch = "PerformFullCloudFetch"
+    let staticStrings = StaticStringsModel()
+    
+    
+    
+//    let saveThemeToCloudString = "SaveThemeToCloud"
+//    let updateThemeInCloudString = "UpdateThemeInCloud"
+//    let updateMotifInCloudString = "UpdateMotifInCloud"
+//
+//    let deleteThemeFromCloudString = "DeleteThemeFromCloud"
+//    let saveMotifToCloudString = "SaveMotifToCloud"
+//    let saveThemesAndMotifsToCloudString = "SaveThemesAndMotifsToCloud"
+//    let saveVariationToCloudString = "SaveVariationToCloud"
+//    
+//    let performFullCloudFetch = "PerformFullCloudFetch"
+    
+
 
     init() {
         
@@ -35,17 +42,16 @@ class DataModel {
         publicDB = container.publicCloudDatabase
         privateDB = container.privateCloudDatabase
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedNotification:", name: saveThemeToCloudString, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedNotification:", name: saveMotifToCloudString, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedNotification:", name: saveThemesAndMotifsToCloudString, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedNotification:", name: updateThemeInCloudString, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedNotification:", name: updateMotifInCloudString, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedNotification:", name: deleteThemeFromCloudString, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedNotification:", name: saveVariationToCloudString, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedNotification:", name: staticStrings.saveThemeToCloudString, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedNotification:", name: staticStrings.saveMotifToCloudString, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedNotification:", name: staticStrings.saveThemesAndMotifsToCloudString, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedNotification:", name: staticStrings.updateThemeInCloudString, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedNotification:", name: staticStrings.updateMotifInCloudString, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedNotification:", name: staticStrings.deleteThemeFromCloudString, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedNotification:", name: staticStrings.saveVariationToCloudString, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedFetchNotification:", name: performFullCloudFetch, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedFetchNotification:", name: staticStrings.performFullCloudFetch, object: nil)
 
-        
         loadData()
         registerDefaults()
         handleFirstTime()
@@ -95,6 +101,8 @@ class DataModel {
         let firstTime = userDefaults.boolForKey("FirstTime")
         
         if firstTime {
+            
+            println("First time!")
             
             let theme1 = Theme(name: "Famous Last Words", recordID: "Famous Last Words")
             
@@ -239,28 +247,15 @@ class DataModel {
             
             
             let dictionary: NSDictionary = ["Themes": themes]
-            NSNotificationCenter.defaultCenter().postNotificationName(saveThemesAndMotifsToCloudString, object: dictionary)
+            NSNotificationCenter.defaultCenter().postNotificationName(staticStrings.saveThemesAndMotifsToCloudString, object: dictionary)
 
         }
     }
     
     func sortThemes() {
-//        themes.sort({ theme1, theme2 in return
-//            theme1.name.localizedStandardCompare(theme2.name) == NSComparisonResult.OrderedAscending})
-        
-//        let dateDescriptor = NSSortDescriptor(key: "", ascending: true)
-        
-//        themes.sort({ $0.date.compare($1.date) == NSComparisonResult.OrderedAscending }
         
         themes.sort({ theme1, theme2 in return
             theme1.dateEdited!.compare (theme2.dateEdited!) == NSComparisonResult.OrderedDescending})
-        
-//        NSSortDescriptor *dateDescriptor = [NSSortDescriptor
-//            sortDescriptorWithKey:@"startDateTime"
-//        ascending:YES];
-//        NSArray *sortDescriptors = [NSArray arrayWithObject:dateDescriptor];
-//        NSArray *sortedEventArray = [nodeEventArray
-//        sortedArrayUsingDescriptors:sortDescriptors];
     }
     
     // MARK: - NSUserDefaults
@@ -315,7 +310,7 @@ class DataModel {
             
             // Batch Saving
             
-            case saveThemesAndMotifsToCloudString:
+            case staticStrings.saveThemesAndMotifsToCloudString:
                 fetchManager.saveThemesAndMotifsToCloud(userInfo.objectForKey("Themes") as [Theme]) {
                     error in
                     if error != nil {
@@ -328,7 +323,7 @@ class DataModel {
             
             // Individual Saves
             
-            case saveThemeToCloudString:
+            case staticStrings.saveThemeToCloudString:
                 fetchManager.saveThemeToCloud(userInfo.objectForKey("Theme") as Theme) {
                     error in
                     if error != nil {
@@ -339,7 +334,7 @@ class DataModel {
                 }
                 break;
             
-            case saveMotifToCloudString:
+            case staticStrings.saveMotifToCloudString:
                 fetchManager.saveMotifToCloud(userInfo.objectForKey("Motif") as Motif, theme: userInfo.objectForKey("Theme") as Theme) {
                     error in
                     if error != nil {
@@ -350,7 +345,7 @@ class DataModel {
                 }
                 break;
             
-            case saveVariationToCloudString:
+            case staticStrings.saveVariationToCloudString:
                 fetchManager.saveVariationToCloud(userInfo.objectForKey("Variation") as Variation, theme: userInfo.objectForKey("Theme") as Theme) {
                     error in
                     if error != nil {
@@ -365,7 +360,7 @@ class DataModel {
             
             // Updates
             
-            case updateThemeInCloudString:
+            case staticStrings.updateThemeInCloudString:
                 fetchManager.updateThemeInCloud(userInfo.objectForKey("Theme") as Theme) {
                     error in
                     if error != nil {
@@ -376,7 +371,7 @@ class DataModel {
             }
             break;
             
-            case updateMotifInCloudString:
+            case staticStrings.updateMotifInCloudString:
                 fetchManager.updateMotifInCloud(userInfo.objectForKey("Motif") as Motif) {
                     error in
                     if error != nil {
@@ -389,7 +384,7 @@ class DataModel {
             
             // Deleting
             
-            case deleteThemeFromCloudString:
+            case staticStrings.deleteThemeFromCloudString:
                 fetchManager.deleteThemeFromCloud(userInfo.objectForKey("Theme") as Theme) {
                     error in
                     if error != nil {
@@ -411,7 +406,7 @@ class DataModel {
         
         switch (notification.name) {
             
-            case performFullCloudFetch:
+            case staticStrings.performFullCloudFetch:
                 
                 var cloudThemes = NSArray()
                 var cloudMotifs = NSArray()

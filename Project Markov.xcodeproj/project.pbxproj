@@ -32,6 +32,7 @@
 		4348B9A31A570F890024746D /* TutorialPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4348B9A21A570F890024746D /* TutorialPageControl.swift */; };
 		4348B9A51A570FBF0024746D /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4348B9A41A570FBF0024746D /* TutorialPageViewController.swift */; };
 		435698A81A4F030000A30547 /* MotifTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435698A71A4F030000A30547 /* MotifTableViewCell.swift */; };
+		43AAAC7A1A8FB6FB004D831C /* StaticStringsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AAAC791A8FB6FB004D831C /* StaticStringsModel.swift */; };
 		43AC46651A507B5700628D9A /* MarkovGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AC46641A507B5700628D9A /* MarkovGenerator.swift */; };
 		43AC46671A507C8500628D9A /* MarkovViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AC46661A507C8500628D9A /* MarkovViewController.swift */; };
 		43CECC8B1A4F24880007B2BE /* MotifDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CECC8A1A4F24880007B2BE /* MotifDetailTableViewController.swift */; };
@@ -82,6 +83,7 @@
 		4348B9A21A570F890024746D /* TutorialPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageControl.swift; sourceTree = "<group>"; };
 		4348B9A41A570FBF0024746D /* TutorialPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
 		435698A71A4F030000A30547 /* MotifTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotifTableViewCell.swift; sourceTree = "<group>"; };
+		43AAAC791A8FB6FB004D831C /* StaticStringsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StaticStringsModel.swift; path = Models/StaticStringsModel.swift; sourceTree = "<group>"; };
 		43AC46641A507B5700628D9A /* MarkovGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkovGenerator.swift; sourceTree = "<group>"; };
 		43AC46661A507C8500628D9A /* MarkovViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkovViewController.swift; sourceTree = "<group>"; };
 		43CECC8A1A4F24880007B2BE /* MotifDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotifDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				432DC8BD1A4DCE92004035F5 /* DataModel.swift */,
+				43AAAC791A8FB6FB004D831C /* StaticStringsModel.swift */,
 				3D52B6EF1A7BAF1500037A90 /* ServerModel.swift */,
 				432DC8C31A4DD02F004035F5 /* Theme.swift */,
 				432DC8C51A4DD07D004035F5 /* Motif.swift */,
@@ -348,6 +351,7 @@
 				43F131921A56F3210047B03A /* SettingsViewController.swift in Sources */,
 				3DC62ECA1A5EDE7C0054418D /* MarkovSettingsViewController.swift in Sources */,
 				432DC8C81A4DE1F7004035F5 /* ThemeTableViewCell.swift in Sources */,
+				43AAAC7A1A8FB6FB004D831C /* StaticStringsModel.swift in Sources */,
 				3D52B6F01A7BAF1500037A90 /* ServerModel.swift in Sources */,
 				43110AE91A52DD46000E211D /* MarkovCollectionViewCell.swift in Sources */,
 				4348B9A31A570F890024746D /* TutorialPageControl.swift in Sources */,
@@ -514,6 +518,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Release;
 		};
