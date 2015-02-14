@@ -24,11 +24,7 @@ class VariationGenerator {
     
     private func shuffleArray(selectedMotifs: [Motif]) -> [String] {
         
-//        println("ORIGINAL ARRAY")
-//        for motif in selectedMotifs {
-//            println("\(motif.content)")
-//        }
-//        println("")
+//        println("ORIGINAL ARRAY"); for motif in selectedMotifs {println("\(motif.content)")}; println("")
         
         var shuffledArray = [String]()
         for motif in selectedMotifs {
@@ -38,11 +34,7 @@ class VariationGenerator {
         
         shuffledArray.shuffle()
         
-//        println("SHUFFLED ARRAY")
-//        for motif in shuffledArray {
-//            println("\(motif)")
-//        }
-//        println("")
+//        println("SHUFFLED ARRAY"); for motif in shuffledArray {println("\(motif)")};println("");
         
         return shuffledArray
     }
@@ -199,8 +191,7 @@ class VariationGenerator {
         variation.totalWordList[startingWords.secondWordIndex].inUse = true
         variation.totalWordList[startingWords.secondWordIndex].inUseIndex.append(1)
         
-//        println("\(variation.sentenceComponents)")
-//        println("")
+//        println("\(variation.sentenceComponents)"); println("")
 
         while variation.sentenceComponents.count < sentenceLength {
             
