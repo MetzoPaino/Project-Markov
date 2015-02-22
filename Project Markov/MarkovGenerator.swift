@@ -88,28 +88,75 @@ class VariationGenerator {
     
     // MARK: - Generate random seed
     // Seed must be -2 from wordArraySize, due to needing 3 words in succession
+    // Seed can't be the same as an already used word
     
-    private func generateRandomSeed(maxSeedLength: Int) -> Int {
+    private func generateRandomSeed(maxSeedLength: Int, alreadyUsedIndexes: [Int]) -> Int {
         
-        var seed = Int(arc4random_uniform(UInt32(maxSeedLength - 2)))
+        var seed: Int
+        
+        do {
+            
+            seed = Int(arc4random_uniform(UInt32(maxSeedLength - 2)))
+        
+        } while contains(alreadyUsedIndexes, seed)
+        
 //        println("SeedForElement: \(seed + 1), wordArraySize: \(maxSeedLength)")
         return seed
     }
     
     // MARK: - Pick starting words
+    // First word can't be already used thanks to provided seed, but second word can without checks.
+    // Skipping already used words means that secondWordIndex can go out of bounds without checks
     
-    private func pickStartingWordsFrom(seed: Int, totalWordList: [VariationWord]) -> (firstWord: String, firstWordIndex: Int, secondWord: String, secondWordIndex: Int) {
+    private func pickStartingWordsFrom(seed: Int, totalWordList: [VariationWord], alreadyUsedIndexes: [Int]) -> (firstWord: String, firstWordIndex: Int, secondWord: String?, secondWordIndex: Int) {
         
-        let firstWord = totalWordList[seed].word
-        let secondWord = totalWordList[seed + 1].word
+        println("total word list count \(totalWordList.count)")
         
-        return (firstWord, seed, secondWord, seed + 1)
+        var secondWordIndex = seed
+        
+        do {
+            
+            secondWordIndex++
+            
+        } while contains(alreadyUsedIndexes, secondWordIndex)
+        
+        
+        if secondWordIndex >= totalWordList.count {
+            
+            // If looking to the end of the array provided no result, start from the beginning, also not allowing the seed
+            
+            secondWordIndex = 0
+            
+            do {
+                
+                secondWordIndex++
+                
+            } while contains(alreadyUsedIndexes, secondWordIndex) || secondWordIndex == seed
+        }
+        
+        
+        
+        
+        if secondWordIndex >= totalWordList.count {
+            // Unable to find any second word
+            
+            let firstWord = totalWordList[seed].word
+            
+            return (firstWord, seed, nil, secondWordIndex)
+            
+        } else {
+            
+            let firstWord = totalWordList[seed].word
+            let secondWord = totalWordList[secondWordIndex].word
+            
+            return (firstWord, seed, secondWord, secondWordIndex)
+        }
     }
     
     // MARK: - Find all possible paths
     // Need to find all possible word paths, then randomly choose one
     
-    private func findWordForContinuationFrom(totalWordList: [VariationWord], firstWord: String, secondWord: String) -> (thirdWord: String, indexOfThirdWord: Int)? {
+    private func findWordForContinuationFrom(totalWordList: [VariationWord], alreadyUsedIndexes: [Int], firstWord: String, secondWord: String) -> (thirdWord: String, indexOfThirdWord: Int)? {
         
         println("\n----\n----")
         println("First word: \(firstWord), Second word: \(secondWord)")
@@ -177,19 +224,30 @@ class VariationGenerator {
         
         let shuffledMotifs = shuffleArray(selectedMotifs)
         variation.totalWordList = stripWords(shuffledMotifs)
+        var usedIndexes = [Int]()
         
         let sentenceLength = generateSentenceLength(maxSentenceLength, minLength: minSentenceLength)
-        var randomSeed = generateRandomSeed(variation.totalWordList.count)
-        var startingWords = pickStartingWordsFrom(randomSeed, totalWordList: variation.totalWordList)
+        var randomSeed = generateRandomSeed(variation.totalWordList.count, alreadyUsedIndexes: usedIndexes)
+        var startingWords = pickStartingWordsFrom(randomSeed, totalWordList: variation.totalWordList, alreadyUsedIndexes: usedIndexes)
         
         variation.sentenceComponents.append(startingWords.firstWord)
         variation.totalWordList[startingWords.firstWordIndex].inUse = true
         variation.totalWordList[startingWords.firstWordIndex].inUseIndex.append(0)
-
+        usedIndexes.append(startingWords.firstWordIndex)
         
-        variation.sentenceComponents.append(startingWords.secondWord)
-        variation.totalWordList[startingWords.secondWordIndex].inUse = true
-        variation.totalWordList[startingWords.secondWordIndex].inUseIndex.append(1)
+        if let secondWord = startingWords.secondWord {
+            
+            variation.sentenceComponents.append(startingWords.secondWord!)
+            variation.totalWordList[startingWords.secondWordIndex].inUse = true
+            variation.totalWordList[startingWords.secondWordIndex].inUseIndex.append(1)
+            usedIndexes.append(startingWords.secondWordIndex)
+
+        } else {
+            // Unable to find a 2nd starting word, real issue here
+            println("Unable to find a 2nd starting word")
+            return variation
+            
+        }
         
 //        println("\(variation.sentenceComponents)"); println("")
 
@@ -205,15 +263,18 @@ class VariationGenerator {
                 
                 if variation.sentenceComponents.count < sentenceLength {
                     
-                    if let nextWord = findWordForContinuationFrom(variation.totalWordList, firstWord: startingWords.firstWord, secondWord: startingWords.secondWord) {
+                    if let nextWord = findWordForContinuationFrom(variation.totalWordList, alreadyUsedIndexes: usedIndexes, firstWord: startingWords.firstWord, secondWord: startingWords.secondWord!) {
+                        
                         variation.sentenceComponents.append(nextWord.thirdWord)
                         variation.totalWordList[nextWord.indexOfThirdWord].inUse = true
                         variation.totalWordList[nextWord.indexOfThirdWord].inUseIndex.append(variation.sentenceComponents.count - 1)
-                        startingWords.firstWord = startingWords.secondWord
+                        
+                        usedIndexes.append(nextWord.indexOfThirdWord)
+                        startingWords.firstWord = startingWords.secondWord!
                         startingWords.secondWord = nextWord.thirdWord
+                        
                     } else {
                         // Couldn't find a suitable string, break and try from new seed
-                        println("We break 1")
                         break
                     }
                     
@@ -221,23 +282,35 @@ class VariationGenerator {
                     
                 } else {
                     // MarkovArray has reached SentenceLength, so don't add anything
-                    println("We break 2")
 
 //                    println("We break at \(itterator)")
                     break
                 }
             }
             println("end of section")
-            randomSeed = generateRandomSeed(variation.totalWordList.count)
-            startingWords = pickStartingWordsFrom(randomSeed, totalWordList: variation.totalWordList)
+            randomSeed = generateRandomSeed(variation.totalWordList.count, alreadyUsedIndexes: usedIndexes)
+            startingWords = pickStartingWordsFrom(randomSeed, totalWordList: variation.totalWordList, alreadyUsedIndexes: usedIndexes)
             
             variation.sentenceComponents.append(startingWords.firstWord)
             variation.totalWordList[startingWords.firstWordIndex].inUse = true
             variation.totalWordList[startingWords.firstWordIndex].inUseIndex.append(variation.sentenceComponents.count - 1)
+            usedIndexes.append(startingWords.firstWordIndex)
 
-            variation.sentenceComponents.append(startingWords.secondWord)
-            variation.totalWordList[startingWords.secondWordIndex].inUse = true
-            variation.totalWordList[startingWords.secondWordIndex].inUseIndex.append(variation.sentenceComponents.count - 1)
+
+            
+            if let secondWord = startingWords.secondWord {
+                
+                variation.sentenceComponents.append(startingWords.secondWord!)
+                variation.totalWordList[startingWords.secondWordIndex].inUse = true
+                variation.totalWordList[startingWords.secondWordIndex].inUseIndex.append(variation.sentenceComponents.count - 1)
+                usedIndexes.append(startingWords.secondWordIndex)
+                
+            } else {
+                
+                println("Unable to find a 2nd starting word for new section")
+                return variation
+            }
+
         }
         
         // If a word is used more than once it can cause issues

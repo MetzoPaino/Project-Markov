@@ -52,7 +52,7 @@ class MarkovViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     let variationGenerator = VariationGenerator()
     var minSentenceLength = 10
-    var maxSentenceLength = 20
+    var maxSentenceLength = 50
     var maxSectionLength = 8
     
     
