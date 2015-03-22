@@ -14,10 +14,11 @@ protocol ThemeDetailTableViewControllerDelegate: class {
     func themeDetailTableViewController(controller: ThemeDetailTableViewController, didFinishEditingTheme theme: Theme)
 }
 
-class ThemeDetailTableViewController: UIViewController, UITextViewDelegate {
+class ThemeDetailTableViewController: UIViewController, UITextViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet var textView: UITextView!
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
+    @IBOutlet var colorSelectorBottomConstraint: NSLayoutConstraint!
     
     weak var delegate: ThemeDetailTableViewControllerDelegate?
 
@@ -26,6 +27,9 @@ class ThemeDetailTableViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillChange:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillChange:", name: UIKeyboardWillHideNotification, object: nil)
+
         let dismissKeyboardBarButton = UIBarButtonItem(title: "Keyboard", style: .Plain , target: self, action: "dismissKeyboard")
         self.navigationItem.setRightBarButtonItems([doneBarButton, dismissKeyboardBarButton], animated: true)
         
@@ -138,6 +142,54 @@ class ThemeDetailTableViewController: UIViewController, UITextViewDelegate {
             }
         }
         
+
+    }
+    
+    // MARK: - Notifications
+    
+    func keyboardWillChange(notification: NSNotification)  {
+        
+        var animationDuration = NSNumber(double: 0.25)
+        
+        if let userInfo = notification.userInfo {
+            
+            if notification.name == UIKeyboardWillShowNotification {
+                
+                if let keyboardFrame = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+                    colorSelectorBottomConstraint.constant = keyboardFrame.height
+                }
+            } else if notification.name == UIKeyboardWillHideNotification {
+                
+                if let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
+                    colorSelectorBottomConstraint.constant = 0
+                    
+            }
+
+            if let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber) {
+                animationDuration = duration
+            }
+        }
+        UIView.animateWithDuration(animationDuration.doubleValue, animations: {
+        
+            self.view.layoutIfNeeded()
+        })
+        }
+    }
+    
+    // MARK: CollectionView delegate
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as UICollectionViewCell
+
+        
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 
     }
 }

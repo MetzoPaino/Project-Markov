@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H1p-Uh-vWS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H1p-Uh-vWS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6246"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -11,10 +11,6 @@
                 <navigationController title="Master" id="RMx-3f-FxP" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translucent="NO" id="Pmd-2v-anx">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.29019607843137252" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.94901960780000005" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="9yq-V0-5JQ" kind="relationship" relationship="rootViewController" id="wz6-FT-UhB"/>
@@ -534,7 +530,6 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="iAh-zJ-FQl">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
-                                <color key="backgroundColor" red="0.81960784313725488" green="0.82352941176470584" blue="0.82352941176470584" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ThemeCell" rowHeight="80" id="WCw-Qf-5nD" customClass="ThemeTableViewCell" customModule="Project_Markov" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="86" width="320" height="44"/>
@@ -548,7 +543,7 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X40-Ov-Ogr">
                                                             <rect key="frame" x="10" y="10" width="560" height="20"/>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="24"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                             <color key="textColor" red="0.29019607843137252" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -557,7 +552,7 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="qRf-Tn-PDj"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.29019607843137252" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -566,12 +561,11 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="rAw-29-pJM"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.29019607843137252" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.94901960784313721" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="jIc-4C-Aah" secondAttribute="bottom" constant="10" id="01m-aN-DYf"/>
                                                         <constraint firstItem="jIc-4C-Aah" firstAttribute="leading" secondItem="6gr-y0-fNh" secondAttribute="leading" constant="10" id="0c0-kz-Pt8"/>
@@ -631,7 +625,6 @@
                                         </connections>
                                     </barButtonItem>
                                 </items>
-                                <color key="barTintColor" red="0.29019607843137252" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -647,13 +640,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Themes" id="rrK-k9-qYc">
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="Npg-Q9-C85">
-                            <color key="tintColor" red="0.94901960780000005" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="7p1-pb-dxy" kind="presentation" identifier="ShowSettings" id="Z2L-hM-eaT"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="FYz-UG-HRV">
-                            <color key="tintColor" red="0.94901960780000005" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="67c-7a-QW6" kind="presentation" identifier="AddTheme" id="cgP-tc-iU7"/>
                             </connections>
@@ -1003,12 +994,43 @@
                                     <outlet property="delegate" destination="gij-Of-9go" id="rCq-LE-noJ"/>
                                 </connections>
                             </textView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ny2-Hy-eWU">
+                                <rect key="frame" x="0.0" y="506" width="600" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="tRl-pj-0ND"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rLs-Td-8GJ">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Pnq-fR-mBY">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="gij-Of-9go" id="Xb7-1r-wad"/>
+                                    <outlet property="delegate" destination="gij-Of-9go" id="gMt-pj-5gb"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="XJK-q9-pft" secondAttribute="trailing" id="39T-IG-tHV"/>
+                            <constraint firstItem="Ny2-Hy-eWU" firstAttribute="leading" secondItem="ThE-7I-VVh" secondAttribute="leading" id="5Wc-t7-l19"/>
                             <constraint firstItem="XJK-q9-pft" firstAttribute="top" secondItem="w9J-QT-Q2T" secondAttribute="bottom" id="Hrj-Fj-aRG"/>
                             <constraint firstItem="gje-sd-yGy" firstAttribute="top" secondItem="XJK-q9-pft" secondAttribute="bottom" id="MCb-jc-etl"/>
+                            <constraint firstItem="gje-sd-yGy" firstAttribute="top" secondItem="Ny2-Hy-eWU" secondAttribute="bottom" id="PUp-pb-CYj"/>
+                            <constraint firstAttribute="trailing" secondItem="Ny2-Hy-eWU" secondAttribute="trailing" id="eF6-B0-3mt"/>
                             <constraint firstItem="XJK-q9-pft" firstAttribute="leading" secondItem="ThE-7I-VVh" secondAttribute="leading" id="vsE-Aw-0ub"/>
                         </constraints>
                     </view>
@@ -1025,6 +1047,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="colorSelectorBottomConstraint" destination="PUp-pb-CYj" id="Xbm-0d-eON"/>
                         <outlet property="doneBarButton" destination="4Dn-DI-6Fg" id="rr2-tx-7TV"/>
                         <outlet property="textView" destination="XJK-q9-pft" id="9Wz-ob-Ygw"/>
                     </connections>
