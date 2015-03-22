@@ -154,6 +154,7 @@ class ThemesViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCellWithIdentifier("ThemeCell", forIndexPath: indexPath) as ThemeTableViewCell
             let theme = dataModel.themes[indexPath.row]
             cell.name.text = theme.name
+            cell.name.textColor = theme.tint
                 
             if theme.motifs.count == 0 {
                 cell.motifs.hidden = true

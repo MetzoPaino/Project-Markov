@@ -996,6 +996,7 @@
                             </textView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ny2-Hy-eWU">
                                 <rect key="frame" x="0.0" y="506" width="600" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="tRl-pj-0ND"/>
                                 </constraints>
@@ -1047,6 +1048,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="collectionView" destination="Ny2-Hy-eWU" id="dgx-eR-LNJ"/>
                         <outlet property="colorSelectorBottomConstraint" destination="PUp-pb-CYj" id="Xbm-0d-eON"/>
                         <outlet property="doneBarButton" destination="4Dn-DI-6Fg" id="rr2-tx-7TV"/>
                         <outlet property="textView" destination="XJK-q9-pft" id="9Wz-ob-Ygw"/>
@@ -1122,7 +1124,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="ONI-Ck-Wj3" id="5YH-Ih-uz9"/>
                                 </connections>

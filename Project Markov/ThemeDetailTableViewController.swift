@@ -14,16 +14,18 @@ protocol ThemeDetailTableViewControllerDelegate: class {
     func themeDetailTableViewController(controller: ThemeDetailTableViewController, didFinishEditingTheme theme: Theme)
 }
 
-class ThemeDetailTableViewController: UIViewController, UITextViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
+class ThemeDetailTableViewController: UIViewController, UITextViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet var textView: UITextView!
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
+    @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var colorSelectorBottomConstraint: NSLayoutConstraint!
     
     weak var delegate: ThemeDetailTableViewControllerDelegate?
 
     var themeToEdit: Theme?
     let colorPickerModel = ColorPickerModel()
+    var selectedColor = UIColor()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,9 +73,11 @@ class ThemeDetailTableViewController: UIViewController, UITextViewDelegate, UICo
         if let theme = themeToEdit {
             theme.name = textView.text
             theme.dateEdited = NSDate()
+            theme.tint = selectedColor
             delegate?.themeDetailTableViewController(self, didFinishEditingTheme: theme)
         } else {
             let theme = Theme(name: textView.text)
+            theme.tint = selectedColor
             delegate?.themeDetailTableViewController(self, didFinishAddingTheme: theme)
         }
     }
@@ -192,6 +196,21 @@ class ThemeDetailTableViewController: UIViewController, UITextViewDelegate, UICo
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        selectedColor = self.colorPickerModel.availableColors[indexPath.row]
 
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        
+        // Need to find way to center cells, otherwise break on rotation
+        
+        return UIEdgeInsetsMake(0, 0, 0, 0.0);
+    }
+    
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        
+        super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
+        self.collectionView.collectionViewLayout.invalidateLayout()
     }
 }

@@ -24,6 +24,7 @@ class Theme: NSObject, NSCoding {
         self.dateCreated = NSDate()
         self.dateEdited = dateCreated
         self.record = CKRecord(recordType: "Theme")
+        self.tint = UIColor.blackColor()
         super.init()
     }
     
@@ -31,7 +32,8 @@ class Theme: NSObject, NSCoding {
         self.name = name
         self.dateCreated = NSDate()
         self.dateEdited = dateCreated
-        
+        self.tint = UIColor.blackColor()
+
         self.record = CKRecord(recordType: "Theme", recordID: CKRecordID(recordName: recordID))
         super.init()
     }
@@ -43,7 +45,7 @@ class Theme: NSObject, NSCoding {
         dateCreated = aDecoder.decodeObjectForKey("DateCreated") as? NSDate
         dateEdited = aDecoder.decodeObjectForKey("DateEdited") as? NSDate
         record = aDecoder.decodeObjectForKey("Record") as CKRecord
-        
+        tint = aDecoder.decodeObjectForKey("Tint") as UIColor
         
         
         
@@ -68,6 +70,6 @@ class Theme: NSObject, NSCoding {
         aCoder.encodeObject(dateCreated, forKey: "DateCreated")
         aCoder.encodeObject(dateEdited, forKey: "DateEdited")
         aCoder.encodeObject(record, forKey: "Record")
-
+        aCoder.encodeObject(tint, forKey: "Tint")
     }
 }
