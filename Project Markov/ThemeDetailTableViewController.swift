@@ -23,6 +23,7 @@ class ThemeDetailTableViewController: UIViewController, UITextViewDelegate, UICo
     weak var delegate: ThemeDetailTableViewControllerDelegate?
 
     var themeToEdit: Theme?
+    let colorPickerModel = ColorPickerModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -163,28 +164,29 @@ class ThemeDetailTableViewController: UIViewController, UITextViewDelegate, UICo
                 if let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
                     colorSelectorBottomConstraint.constant = 0
                     
+                }
             }
-
+            
             if let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber) {
                 animationDuration = duration
             }
-        }
-        UIView.animateWithDuration(animationDuration.doubleValue, animations: {
+            
+            UIView.animateWithDuration(animationDuration.doubleValue, animations: {
         
-            self.view.layoutIfNeeded()
-        })
+                self.view.layoutIfNeeded()
+            })
         }
     }
     
     // MARK: CollectionView delegate
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return colorPickerModel.availableColors.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as UICollectionViewCell
-
+        cell.backgroundColor = colorPickerModel.availableColors[indexPath.row]
         
         return cell
     }

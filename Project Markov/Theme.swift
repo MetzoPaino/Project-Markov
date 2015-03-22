@@ -15,6 +15,7 @@ class Theme: NSObject, NSCoding {
     var variations = [Variation]()
     var dateCreated: NSDate?
     var dateEdited: NSDate?
+    var tint = UIColor()
     
     var record: CKRecord
 

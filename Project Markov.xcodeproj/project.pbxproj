@@ -29,6 +29,7 @@
 		433BB3861A541965007A896F /* VariationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433BB3851A541965007A896F /* VariationsTableViewController.swift */; };
 		433BB3881A541AB5007A896F /* VariationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433BB3871A541AB5007A896F /* VariationsTableViewCell.swift */; };
 		433BB38A1A54455A007A896F /* ThemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433BB3891A54455A007A896F /* ThemesViewController.swift */; };
+		433D9C271ABEFC60002EC074 /* ColorPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433D9C261ABEFC60002EC074 /* ColorPickerModel.swift */; };
 		4348B9A31A570F890024746D /* TutorialPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4348B9A21A570F890024746D /* TutorialPageControl.swift */; };
 		4348B9A51A570FBF0024746D /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4348B9A41A570FBF0024746D /* TutorialPageViewController.swift */; };
 		435698A81A4F030000A30547 /* MotifTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435698A71A4F030000A30547 /* MotifTableViewCell.swift */; };
@@ -80,6 +81,7 @@
 		433BB3851A541965007A896F /* VariationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariationsTableViewController.swift; sourceTree = "<group>"; };
 		433BB3871A541AB5007A896F /* VariationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariationsTableViewCell.swift; sourceTree = "<group>"; };
 		433BB3891A54455A007A896F /* ThemesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemesViewController.swift; sourceTree = "<group>"; };
+		433D9C261ABEFC60002EC074 /* ColorPickerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorPickerModel.swift; path = Models/ColorPickerModel.swift; sourceTree = "<group>"; };
 		4348B9A21A570F890024746D /* TutorialPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageControl.swift; sourceTree = "<group>"; };
 		4348B9A41A570FBF0024746D /* TutorialPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
 		435698A71A4F030000A30547 /* MotifTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotifTableViewCell.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				43AAAC791A8FB6FB004D831C /* StaticStringsModel.swift */,
 				3D52B6EF1A7BAF1500037A90 /* ServerModel.swift */,
 				432DC8C31A4DD02F004035F5 /* Theme.swift */,
+				433D9C261ABEFC60002EC074 /* ColorPickerModel.swift */,
 				432DC8C51A4DD07D004035F5 /* Motif.swift */,
 				433BB3831A54182E007A896F /* Variation.swift */,
 				43AC46641A507B5700628D9A /* MarkovGenerator.swift */,
@@ -373,6 +376,7 @@
 				43F131951A56F4850047B03A /* MinMaxSentenceLengthTableViewCell.swift in Sources */,
 				432DC89C1A4DCABB004035F5 /* AppDelegate.swift in Sources */,
 				432DC8C61A4DD07D004035F5 /* Motif.swift in Sources */,
+				433D9C271ABEFC60002EC074 /* ColorPickerModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
